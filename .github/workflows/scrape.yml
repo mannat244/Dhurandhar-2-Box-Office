@@ -1,0 +1,47 @@
+name: Update Box Office Data
+
+on:
+  schedule:
+    # Runs every 3 hours (adjust as needed)
+    - cron: "0 */3 * * *"
+  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Run scraper
+        run: python scripts/scrape.py
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet data.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if data changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "chore: update box office data [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push

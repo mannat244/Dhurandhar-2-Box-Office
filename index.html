@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhurandhar 2: The Revenge – Box Office | The Binary Critic</title>
+  <meta name="description" content="Live box office tracker for Dhurandhar 2: The Revenge. Day-wise collection, language breakdown, worldwide total – updated automatically." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #0f0f18;
+      --card:     #13131f;
+      --border:   #1e1c2e;
+      --gold:     #a855f7;
+      --gold-dim: #7c3aed;
+      --text:     #f0f0f8;
+      --muted:    #7a789a;
+      --red:      #e85454;
+      --green:    #4be886;
+      --accent:   #c084fc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .site-logo span { color: var(--text); }
+
+    .header-tag {
+      font-size: 0.7rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://image.tmdb.org/t/p/original/owQeDouUZ6wI6f1aTOYEFd511zn.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      filter: brightness(0.25) saturate(0.6);
+      transform: scale(1.04);
+      transition: transform 12s ease;
+    }
+    .hero-backdrop.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--bg) 0%,
+        rgba(8, 8, 16, 0.6) 40%,
+        transparent 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-end;
+      padding: 2rem 2rem 2.5rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-poster {
+      width: 110px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      border: 2px solid rgba(232, 184, 75, 0.3);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero-poster.loaded { opacity: 1; transform: translateY(0); }
+
+    .hero-text { flex: 1; }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.35s forwards;
+    }
+    .hero-title em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.5s 0.5s forwards;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .hero-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+
+    .verdict-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.6s forwards;
+    }
+
+    /* ── MAIN LAYOUT ──────────────────────────────────────────── */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* ── STAT CARDS ────────────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: -1px;
+      transform: translateY(-28px);
+    }
+
+    .stat-card {
+      background: var(--card);
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .stat-card:hover { background: #18183a; }
+
+    .stat-label {
+      font-size: 0.65rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-value .unit {
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    .stat-card.highlight .stat-value { color: var(--accent); }
+
+    /* ── SECTION TITLES ───────────────────────────────────────── */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title span { color: var(--accent); }
+
+    /* ── CHART SECTION ─────────────────────────────────────────── */
+    .chart-section { margin-bottom: 3rem; }
+
+    .chart-wrapper {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1rem;
+      position: relative;
+    }
+
+    .chart-inner { height: 300px; }
+
+    /* ── LANGUAGE TABS ─────────────────────────────────────────── */
+    .lang-section { margin-bottom: 3rem; }
+
+    .tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .tab-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+    .tab-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .lang-panel { display: none; }
+    .lang-panel.active { display: block; }
+
+    .lang-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .lang-total {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .lang-verdict {
+      font-size: 0.72rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    /* ── DAY TABLE ─────────────────────────────────────────────── */
+    .day-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .day-table th {
+      background: var(--surface);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 16px;
+      text-align: left;
+    }
+
+    .day-table td {
+      padding: 11px 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .day-table tr:hover td { background: rgba(232, 184, 75, 0.03); }
+
+    .day-num {
+      font-family: 'DM Mono', monospace;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .day-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .day-bar-wrap {
+      width: 100%;
+      background: var(--bg);
+      border-radius: 3px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .day-bar {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+      transition: width 0.8s ease;
+    }
+
+    .rating-pill {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .rating-excellent { background: rgba(75, 232, 134, 0.12); color: var(--green); }
+    .rating-strong    { background: rgba(92, 106, 255, 0.12); color: var(--accent); }
+    .rating-good      { background: rgba(168, 85, 247, 0.12); color: var(--accent); }
+    .rating-average   { background: rgba(128, 128, 160, 0.12); color: var(--muted); }
+    .rating-low       { background: rgba(232, 84, 84, 0.12); color: var(--red); }
+
+    /* ── COMBINED TABLE ───────────────────────────────────────── */
+    .combined-section { margin-bottom: 3rem; }
+
+    /* ── FOOTER / SOURCE ──────────────────────────────────────── */
+    .source-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .source-bar a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-bar a:hover { text-decoration: underline; }
+
+    .last-updated {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+    }
+
+    .tbc-footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+    .tbc-footer a { color: var(--accent); text-decoration: none; }
+    .tbc-footer a:hover { text-decoration: underline; }
+
+    /* ── LOADING / ERROR ─────────────────────────────────────── */
+    .loading-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      gap: 1rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* ── ANIMATIONS ───────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-poster { width: 80px; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-content { padding: 1.5rem 1rem 2rem; gap: 1rem; }
+      .stat-value { font-size: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-poster { display: none; }
+      .main { padding: 0 1rem 3rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── SITE HEADER ────────────────────────────────────────── -->
+  <header class="site-header">
+    <a class="site-logo" href="https://www.thebinarycritic.in">
+      <span>The Binary </span>Critic
+    </a>
+    <span class="header-tag">Box Office Tracker</span>
+  </header>
+
+  <!-- ── HERO ──────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-backdrop" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img
+        class="hero-poster"
+        id="heroPoster"
+        src="https://image.tmdb.org/t/p/w342/ov8vrRLZGoXHpYjSY9Vpv1tHJX7.jpg"
+        alt="Dhurandhar 2: The Revenge Poster"
+      />
+      <div class="hero-text">
+        <div class="hero-eyebrow">Box Office Collection · 2026</div>
+        <h1 class="hero-title">Dhurandhar 2:<br /><em>The Revenge</em></h1>
+        <div class="verdict-badge" id="verdictBadge">Loading…</div>
+        <div class="hero-meta">
+          <span>Dir. Aditya Dhar</span>
+          <span class="dot"></span>
+          <span>Released 19 Mar 2026</span>
+          <span class="dot"></span>
+          <span>Hindi · Telugu · Tamil · Malayalam · Kannada</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN ───────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Stat cards -->
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card loading-state"><div class="spinner"></div></div>
+      <div class="stat-card loading-state"></div>
+      <div class="stat-card loading-state"></div>
+      <div class="stat-card loading-state"></div>
+    </div>
+
+    <!-- Day-wise chart -->
+    <section class="chart-section" id="chartSection" style="display:none;">
+      <div class="section-title">Day-Wise India <span>Net Collection</span></div>
+      <div class="chart-wrapper">
+        <div class="chart-inner">
+          <canvas id="dayChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Language breakdown -->
+    <section class="lang-section" id="langSection" style="display:none;">
+      <div class="section-title">Collection by <span>Language</span></div>
+      <div class="tabs" id="langTabs"></div>
+      <div id="langPanels"></div>
+    </section>
+
+    <!-- Combined day-wise table -->
+    <section class="combined-section" id="combinedSection" style="display:none;">
+      <div class="section-title">Combined Day-Wise <span>All Languages</span></div>
+      <div id="combinedTableWrap"></div>
+    </section>
+
+    <!-- ── THE BINARY CRITIC CTA ─────────────────────────────────── -->
+<div style="
+  background: linear-gradient(135deg, #1a0a2e 0%, #13131f 60%, #1a0a2e 100%);
+  border: 1px solid #2d1f4e;
+  border-radius: 14px;
+  padding: 2rem 2rem 1.8rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+">
+  <!-- purple glow blob -->
+  <div style="
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(168,85,247,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  "></div>
+
+  <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
+    <div style="width:8px;height:8px;border-radius:50%;background:#a855f7;box-shadow:0 0 8px #a855f7;"></div>
+    <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#a855f7;">The Binary Critic</span>
+  </div>
+
+  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:0.05em;color:#f0f0f8;margin-bottom:0.4rem;line-height:1.1;">
+    What do <em style="color:#c084fc;font-style:normal;">you</em> think of Dhurandhar 2?
+  </h3>
+
+  <p style="font-size:0.88rem;color:#7a789a;margin-bottom:1.4rem;max-width:480px;line-height:1.6;">
+    Read critic and community reviews, rate the film, and leave your own verdict on The Binary Critic — India's growing movie community.
+  </p>
+
+  <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+    <a href="https://www.thebinarycritic.in/movie/1582770"
+       target="_blank" rel="noopener"
+       style="
+         display:inline-flex;align-items:center;gap:0.5rem;
+         background:linear-gradient(135deg,#a855f7,#7c3aed);
+         color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.85rem;
+         padding:10px 20px;border-radius:8px;text-decoration:none;
+         box-shadow:0 4px 20px rgba(168,85,247,0.35);
+         transition:transform 0.15s,box-shadow 0.15s;
+       "
+       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 28px rgba(168,85,247,0.5)'"
+       onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(168,85,247,0.35)'"
+    >
+      ✍️ Write Your Review
+    </a>
+    <a href="https://www.thebinarycritic.in/movie/1582770"
+       target="_blank" rel="noopener"
+       style="
+         display:inline-flex;align-items:center;gap:0.5rem;
+         background:transparent;border:1px solid #2d1f4e;
+         color:#c084fc;font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.85rem;
+         padding:10px 20px;border-radius:8px;text-decoration:none;
+         transition:border-color 0.15s,color 0.15s;
+       "
+       onmouseover="this.style.borderColor='#a855f7';this.style.color='#fff'"
+       onmouseout="this.style.borderColor='#2d1f4e';this.style.color='#c084fc'"
+    >
+      📖 Read Reviews ↗
+    </a>
+  </div>
+</div>
+<!-- ── END CTA ────────────────────────────────────────────────── -->
+
+    <!-- Source attribution -->
+    <div class="source-bar" id="sourceBar" style="display:none;">
+      <span>
+        Box office figures are estimates and may vary.
+      </span>
+      <span class="last-updated" id="lastUpdated"></span>
+    </div>
+
+    <!-- TBC footer -->
+    <footer class="tbc-footer">
+      <a href="https://www.thebinarycritic.in/movie/1582770" target="_blank" rel="noopener">
+        View full review on The Binary Critic ↗
+      </a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <span>© The Binary Critic</span>
+    </footer>
+
+  </main>
+
+  <script>
+    // ── DATA LOADING ─────────────────────────────────────────
+    const DATA_URL = './data.json';
+
+    async function loadData() {
+      const resp = await fetch(DATA_URL + '?t=' + Date.now());
+      if (!resp.ok) throw new Error('Failed to fetch data.json');
+      return resp.json();
+    }
+
+    // ── FORMATTING HELPERS ────────────────────────────────────
+    const fmt = n => {
+      if (n === null || n === undefined) return 'N/A';
+      if (n >= 1000) return (n / 1000).toFixed(2) + 'K';
+      return parseFloat(n).toFixed(2);
+    };
+
+    const fmtCr = n => {
+      if (!n || n === 0) return '–';
+      return '₹' + fmt(n) + ' Cr';
+    };
+
+    const ratingClass = r => {
+      const map = {
+        Excellent: 'rating-excellent',
+        Strong:    'rating-strong',
+        Good:      'rating-good',
+        Average:   'rating-average',
+        Low:       'rating-low',
+      };
+      return map[r] || 'rating-average';
+    };
+
+    function formatUpdated(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return 'Updated ' + d.toLocaleString('en-IN', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+        timeZone: 'Asia/Kolkata',
+      }) + ' IST';
+    }
+
+    // ── RENDER FUNCTIONS ─────────────────────────────────────
+
+    function renderStats(summary) {
+      const grid = document.getElementById('statsGrid');
+      grid.innerHTML = `
+        <div class="stat-card highlight">
+          <div class="stat-label">Worldwide</div>
+          <div class="stat-value">${fmt(summary.worldwide)}<span class="unit"> Cr</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">India Net</div>
+          <div class="stat-value">${fmt(summary.india_net)}<span class="unit"> Cr</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">India Gross</div>
+          <div class="stat-value">${fmt(summary.india_gross)}<span class="unit"> Cr</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Overseas</div>
+          <div class="stat-value">${fmt(summary.overseas)}<span class="unit"> Cr</span></div>
+        </div>
+      `;
+    }
+
+    function renderVerdictBadge(verdict) {
+      const el = document.getElementById('verdictBadge');
+      el.textContent = verdict || 'In Cinemas';
+    }
+
+    let chartInstance = null;
+
+    function renderChart(combined) {
+      const section = document.getElementById('chartSection');
+      section.style.display = 'block';
+      const labels = combined.map(d => d.label.replace('\n', ' '));
+      const values = combined.map(d => d.india_net);
+      const maxVal = Math.max(...values);
+      const colors = values.map(v => v === maxVal ? '#a855f7' : 'rgba(168,85,247,0.45)');
+
+      if (chartInstance) chartInstance.destroy();
+      chartInstance = new Chart(document.getElementById('dayChart'), {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'India Net (₹ Cr)',
+            data: values,
+            backgroundColor: colors,
+            borderRadius: 4,
+            borderSkipped: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 900, easing: 'easeOutQuart' },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ' ₹' + ctx.parsed.y.toFixed(2) + ' Cr',
+              },
+              backgroundColor: '#14142a',
+              borderColor: '#1e1e38',
+              borderWidth: 1,
+              titleColor: '#e8e8f0',
+              bodyColor: '#c084fc',
+              padding: 10,
+            },
+          },
+          scales: {
+            x: {
+              ticks: { color: '#8080a0', font: { family: 'DM Mono', size: 10 } },
+              grid: { color: 'rgba(30,30,56,0.8)' },
+            },
+            y: {
+              ticks: {
+                color: '#8080a0',
+                font: { family: 'DM Mono', size: 10 },
+                callback: v => '₹' + v + ' Cr',
+              },
+              grid: { color: 'rgba(30,30,56,0.8)' },
+            },
+          },
+        },
+      });
+    }
+
+    function renderLanguages(languages) {
+      const section  = document.getElementById('langSection');
+      const tabsEl   = document.getElementById('langTabs');
+      const panelsEl = document.getElementById('langPanels');
+      section.style.display = 'block';
+      tabsEl.innerHTML  = '';
+      panelsEl.innerHTML = '';
+
+      const langOrder = ['Hindi', 'Telugu', 'Tamil', 'Malayalam', 'Kannada'];
+      const ordered = langOrder.filter(l => languages[l]).concat(
+        Object.keys(languages).filter(l => !langOrder.includes(l))
+      );
+
+      ordered.forEach((lang, idx) => {
+        const langData = languages[lang];
+
+        // Tab
+        const btn = document.createElement('button');
+        btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
+        btn.textContent = lang;
+        btn.dataset.lang = lang;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('panel-' + lang).classList.add('active');
+        });
+        tabsEl.appendChild(btn);
+
+        // Panel
+        const maxDay = Math.max(...langData.days.map(d => d.collection));
+        const rows = langData.days.map(d => {
+          const pct = maxDay > 0 ? (d.collection / maxDay) * 100 : 0;
+          return `
+            <tr>
+              <td class="day-num">Day ${d.day}</td>
+              <td class="day-amount">₹ ${d.collection.toFixed(2)}<small style="font-family:'DM Sans';font-size:0.7rem;color:var(--muted)"> Cr</small></td>
+              <td style="width:35%;min-width:80px;">
+                <div class="day-bar-wrap">
+                  <div class="day-bar" style="width:${pct}%"></div>
+                </div>
+              </td>
+              <td><span class="rating-pill ${ratingClass(d.rating)}">${d.rating}</span></td>
+            </tr>`;
+        }).join('');
+
+        const panel = document.createElement('div');
+        panel.className = 'lang-panel' + (idx === 0 ? ' active' : '');
+        panel.id = 'panel-' + lang;
+        panel.innerHTML = `
+          <div class="lang-header">
+            <div class="lang-total">${fmtCr(langData.total)}</div>
+            <div class="lang-verdict">${langData.verdict}</div>
+          </div>
+          <table class="day-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Net Collection</th>
+                <th>Trend</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>`;
+        panelsEl.appendChild(panel);
+      });
+    }
+
+    function renderCombinedTable(combined) {
+      const section = document.getElementById('combinedSection');
+      section.style.display = 'block';
+      const maxVal = Math.max(...combined.map(d => d.india_net));
+      let running = 0;
+      const rows = combined.map(d => {
+        running += d.india_net;
+        const pct = maxVal > 0 ? (d.india_net / maxVal) * 100 : 0;
+        return `
+          <tr>
+            <td class="day-num">${d.label.replace('\n', ' ')}</td>
+            <td class="day-amount">₹ ${d.india_net.toFixed(2)}<small style="font-family:'DM Sans';font-size:0.7rem;color:var(--muted)"> Cr</small></td>
+            <td style="width:30%;min-width:80px;">
+              <div class="day-bar-wrap">
+                <div class="day-bar" style="width:${pct}%"></div>
+              </div>
+            </td>
+            <td style="font-family:'DM Mono';font-size:0.78rem;color:var(--muted)">
+              ₹ ${running.toFixed(2)} Cr
+            </td>
+          </tr>`;
+      }).join('');
+
+      document.getElementById('combinedTableWrap').innerHTML = `
+        <table class="day-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>India Net (All Lang.)</th>
+              <th>Trend</th>
+              <th>Running Total</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+
+    // ── HERO BACKDROP LOAD ────────────────────────────────────
+    window.addEventListener('load', () => {
+      const bg = document.getElementById('heroBg');
+      const poster = document.getElementById('heroPoster');
+      bg.classList.add('loaded');
+      poster.addEventListener('load', () => poster.classList.add('loaded'));
+      if (poster.complete) poster.classList.add('loaded');
+    });
+
+    // ── BOOTSTRAP ─────────────────────────────────────────────
+    (async () => {
+      try {
+        const data = await loadData();
+        renderStats(data.summary);
+        renderVerdictBadge(data.summary.verdict);
+
+        if (data.combined_daywise && data.combined_daywise.length > 0) {
+          renderChart(data.combined_daywise);
+          renderCombinedTable(data.combined_daywise);
+        }
+
+        if (data.languages && Object.keys(data.languages).length > 0) {
+          renderLanguages(data.languages);
+        }
+
+        const sourceBar = document.getElementById('sourceBar');
+        sourceBar.style.display = 'flex';
+        document.getElementById('lastUpdated').textContent = formatUpdated(data.last_updated);
+
+      } catch (err) {
+        console.error('Failed to load box office data:', err);
+        document.getElementById('statsGrid').innerHTML = `
+          <div class="stat-card loading-state" style="grid-column:1/-1;color:var(--red);">
+            Failed to load data. Please refresh or check back soon.
+          </div>`;
+      }
+    })();
+  </script>
+
+</body>
+</html>

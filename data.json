@@ -1,0 +1,92 @@
+{
+  "movie": "Dhurandhar 2: The Revenge",
+  "release_date": "2026-03-19",
+  "last_updated": "2026-03-26T12:00:00Z",
+  "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
+  "summary": {
+    "india_gross": 745.23,
+    "india_net": 623.97,
+    "overseas": 261.92,
+    "worldwide": 1007.15,
+    "verdict": "ALL TIME BLOCKBUSTER",
+    "budget": "N/A"
+  },
+  "languages": {
+    "Hindi": {
+      "total": 587.22,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        { "day": 0, "label": "Day 0\nWed", "collection": 43.00, "rating": "Excellent" },
+        { "day": 1, "label": "Day 1\nThu", "collection": 99.10, "rating": "Excellent" },
+        { "day": 2, "label": "Day 2\nFri", "collection": 78.94, "rating": "Excellent" },
+        { "day": 3, "label": "Day 3\nSat", "collection": 105.00, "rating": "Excellent" },
+        { "day": 4, "label": "Day 4\nSun", "collection": 107.00, "rating": "Excellent" },
+        { "day": 5, "label": "Day 5\nMon", "collection": 60.00, "rating": "Excellent" },
+        { "day": 6, "label": "Day 6\nTue", "collection": 52.00, "rating": "Excellent" },
+        { "day": 7, "label": "Day 7\nWed", "collection": 44.50, "rating": "Strong" }
+      ]
+    },
+    "Telugu": {
+      "total": 20.65,
+      "verdict": "N/A",
+      "days": [
+        { "day": 1, "label": "Day 1", "collection": 2.12, "rating": "Average" },
+        { "day": 2, "label": "Day 2", "collection": 1.30, "rating": "Low" },
+        { "day": 3, "label": "Day 3", "collection": 5.00, "rating": "Good" },
+        { "day": 4, "label": "Day 4", "collection": 5.25, "rating": "Good" },
+        { "day": 5, "label": "Day 5", "collection": 3.50, "rating": "Good" },
+        { "day": 6, "label": "Day 6", "collection": 3.10, "rating": "Good" },
+        { "day": 7, "label": "Day 7", "collection": 2.50, "rating": "Average" }
+      ]
+    },
+    "Tamil": {
+      "total": 9.14,
+      "verdict": "N/A",
+      "days": [
+        { "day": 1, "label": "Day 1", "collection": 1.16, "rating": "Low" },
+        { "day": 2, "label": "Day 2", "collection": 0.44, "rating": "Low" },
+        { "day": 3, "label": "Day 3", "collection": 2.95, "rating": "Good" },
+        { "day": 4, "label": "Day 4", "collection": 2.50, "rating": "Average" },
+        { "day": 5, "label": "Day 5", "collection": 1.20, "rating": "Low" },
+        { "day": 6, "label": "Day 6", "collection": 1.15, "rating": "Low" },
+        { "day": 7, "label": "Day 7", "collection": 0.90, "rating": "Low" }
+      ]
+    },
+    "Malayalam": {
+      "total": 0.59,
+      "verdict": "N/A",
+      "days": [
+        { "day": 1, "label": "Day 1", "collection": 0.09, "rating": "Low" },
+        { "day": 2, "label": "Day 2", "collection": 0.01, "rating": "Low" },
+        { "day": 3, "label": "Day 3", "collection": 0.04, "rating": "Low" },
+        { "day": 4, "label": "Day 4", "collection": 0.09, "rating": "Low" },
+        { "day": 5, "label": "Day 5", "collection": 0.15, "rating": "Low" },
+        { "day": 6, "label": "Day 6", "collection": 0.15, "rating": "Low" },
+        { "day": 7, "label": "Day 7", "collection": 0.15, "rating": "Low" }
+      ]
+    },
+    "Kannada": {
+      "total": 0.60,
+      "verdict": "N/A",
+      "days": [
+        { "day": 1, "label": "Day 1", "collection": 0.08, "rating": "Low" },
+        { "day": 2, "label": "Day 2", "collection": 0.03, "rating": "Low" },
+        { "day": 3, "label": "Day 3", "collection": 0.01, "rating": "Low" },
+        { "day": 4, "label": "Day 4", "collection": 0.01, "rating": "Low" },
+        { "day": 5, "label": "Day 5", "collection": 0.15, "rating": "Low" },
+        { "day": 6, "label": "Day 6", "collection": 0.20, "rating": "Low" },
+        { "day": 7, "label": "Day 7", "collection": 0.20, "rating": "Low" }
+      ]
+    }
+  },
+  "combined_daywise": [
+    { "day": 0, "label": "Day 0\n(Wed)", "india_net": 43.00 },
+    { "day": 1, "label": "Day 1\n(Thu)", "india_net": 102.55 },
+    { "day": 2, "label": "Day 2\n(Fri)", "india_net": 80.72 },
+    { "day": 3, "label": "Day 3\n(Sat)", "india_net": 113.00 },
+    { "day": 4, "label": "Day 4\n(Sun)", "india_net": 114.85 },
+    { "day": 5, "label": "Day 5\n(Mon)", "india_net": 65.00 },
+    { "day": 6, "label": "Day 6\n(Tue)", "india_net": 56.60 },
+    { "day": 7, "label": "Day 7\n(Wed)", "india_net": 48.25 }
+  ]
+}
