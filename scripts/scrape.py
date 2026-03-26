@@ -2,6 +2,12 @@
 """
 Box Office Scraper for Dhurandhar 2: The Revenge
 Scrapes sacnilk.com and updates data.json
+
+Strategy:
+  - For each language, find the h2 "X Version - Daily Net Collection"
+  - Then find the NEXT div with id="collection-cards-{N}" after that h2
+  - Pull each <a class="collection-card"> using data-day attribute (reliable)
+  - Parse amount and rating from within each card
 """
 
 import requests
@@ -12,7 +18,7 @@ from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 
 MOVIE_URL = "https://www.sacnilk.com/movie/Dhurandhar_2_2026"
-DATA_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.json")
+DATA_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data.json")
 
 HEADERS = {
     "User-Agent": (
@@ -24,258 +30,282 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
 
-LANGUAGE_ALIASES = {
-    "hindi": "Hindi",
-    "telugu": "Telugu",
-    "tamil": "Tamil",
-    "malayalam": "Malayalam",
-    "kannada": "Kannada",
-}
-
-RATING_EMOJI_MAP = {
-    "🌟": "Excellent",
-    "🔥": "Strong",
-    "📈": "Good",
-    "📊": "Average",
-    "📉": "Low",
-}
+# Languages to scrape, in display order
+LANGUAGES = ["Hindi", "Telugu", "Tamil", "Kannada", "Malayalam"]
 
 
 def parse_crore(text: str) -> float:
-    """Extract numeric crore value from strings like '₹ 99.1Cr' or '₹623.97 Cr'."""
-    if not text:
-        return 0.0
+    """Extract numeric crore value from strings like '₹ 99.1Cr' or '₹633.72 Cr'."""
     text = text.replace(",", "").strip()
-    match = re.search(r"[\d]+(?:\.\d+)?", text)
-    return float(match.group()) if match else 0.0
-
-
-def get_rating(text: str) -> str:
-    """Map emoji to rating label, fallback to stripped text."""
-    for emoji, label in RATING_EMOJI_MAP.items():
-        if emoji in text:
-            return label
-    # Try plain text labels
-    for label in ["Excellent", "Strong", "Good", "Average", "Low"]:
-        if label.lower() in text.lower():
-            return label
-    return "N/A"
+    match = re.search(r"(\d+(?:\.\d+)?)\s*Cr", text, re.IGNORECASE)
+    return float(match.group(1)) if match else 0.0
 
 
 def scrape_movie_page() -> dict:
-    """Fetch and parse the sacnilk movie page."""
     print(f"Fetching: {MOVIE_URL}")
     resp = requests.get(MOVIE_URL, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
-    page_text = soup.get_text(separator="\n")
 
     data = {
         "movie": "Dhurandhar 2: The Revenge",
         "release_date": "2026-03-19",
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": MOVIE_URL,
-        "summary": parse_summary(soup, page_text),
-        "languages": parse_languages(soup, page_text),
+        "summary": parse_summary(soup),
+        "languages": {},
         "combined_daywise": [],
     }
+
+    for lang in LANGUAGES:
+        result = parse_language_section(soup, lang)
+        if result:
+            data["languages"][lang] = result
+            print(f"  {lang}: {len(result['days'])} days, total Rs{result['total']} Cr")
+        else:
+            print(f"  {lang}: section not found")
 
     data["combined_daywise"] = build_combined_daywise(data["languages"])
     return data
 
 
-def parse_summary(soup: BeautifulSoup, page_text: str) -> dict:
-    """Extract summary totals: worldwide, india net, overseas, india gross, verdict."""
+def parse_summary(soup: BeautifulSoup) -> dict:
+    """
+    The summary cards use Tailwind colour classes to distinguish values:
+      text-green-600  -> India Gross
+      text-blue-600   -> Worldwide
+      text-purple-600 -> Overseas
+      text-orange-600 -> India Net
+
+    We take the LARGEST value found per colour class to avoid picking up
+    small partial figures (e.g. a day collection labelled orange elsewhere).
+    """
     summary = {
         "india_gross": 0.0,
-        "india_net": 0.0,
-        "overseas": 0.0,
-        "worldwide": 0.0,
-        "verdict": "N/A",
-        "budget": "N/A",
+        "india_net":   0.0,
+        "overseas":    0.0,
+        "worldwide":   0.0,
+        "verdict":     "N/A",
+        "budget":      "N/A",
     }
 
-    # Patterns to match "Label: ₹123.45 Cr" or "Label\n₹123.45 Cr"
-    patterns = {
-        "worldwide": r"(?:Total Gross|Worldwide)[:\s\n]*₹\s*([\d,]+(?:\.\d+)?)\s*Cr",
-        "india_net": r"India Net[:\s\n]*₹\s*([\d,]+(?:\.\d+)?)\s*Cr",
-        "overseas": r"Overseas[:\s\n]*₹\s*([\d,]+(?:\.\d+)?)\s*Cr",
-        "india_gross": r"India Gross[:\s\n]*₹\s*([\d,]+(?:\.\d+)?)\s*Cr",
-        "budget": r"Budget[:\s\n]*₹?\s*([\d,NA]+(?:\.\d+)?)\s*(?:Cr)?",
+    color_map = {
+        "text-green-600":  "india_gross",
+        "text-blue-600":   "worldwide",
+        "text-purple-600": "overseas",
+        "text-orange-600": "india_net",
     }
 
-    for key, pattern in patterns.items():
-        match = re.search(pattern, page_text, re.IGNORECASE)
-        if match:
-            val = match.group(1).replace(",", "").strip()
-            if key == "budget":
-                summary[key] = val if val.upper() != "NA" else "N/A"
-            else:
-                try:
-                    summary[key] = float(val)
-                except ValueError:
-                    pass
+    for color_class, field in color_map.items():
+        best = 0.0
+        for el in soup.find_all(class_=re.compile(r"\b" + color_class + r"\b")):
+            text = el.get_text(strip=True)
+            if "Rs" in text or chr(8377) in text or "Cr" in text:
+                val = parse_crore(text)
+                if val > best:
+                    best = val
+        if best > 0:
+            summary[field] = best
 
-    # Verdict
-    verdict_match = re.search(
-        r"(ALL TIME BLOCKBUSTER|BLOCKBUSTER|HIT|SUPER HIT|FLOP|AVERAGE|DISASTER)",
-        page_text,
-        re.IGNORECASE,
+    # Verdict — look for the specific verdict text block
+    verdict_el = soup.find(
+        string=re.compile(
+            r"ALL TIME BLOCKBUSTER|BLOCKBUSTER|SUPER HIT|HIT|AVERAGE|FLOP|DISASTER",
+            re.IGNORECASE,
+        )
     )
-    if verdict_match:
-        summary["verdict"] = verdict_match.group(1).upper()
+    if verdict_el:
+        summary["verdict"] = verdict_el.strip().upper()
 
     return summary
 
 
-def parse_languages(soup: BeautifulSoup, page_text: str) -> dict:
-    """Parse per-language daily collection sections."""
-    languages = {}
+def parse_language_section(soup: BeautifulSoup, language: str):
+    """
+    Correct approach — targets structure directly:
 
-    # Strategy 1: Find headings like "Hindi Version - Daily Net Collection"
-    headings = soup.find_all(["h2", "h3", "h4"])
-    for heading in headings:
-        heading_text = heading.get_text(strip=True)
-        lang_match = re.search(
-            r"(Hindi|Telugu|Tamil|Malayalam|Kannada)", heading_text, re.IGNORECASE
-        )
-        if not lang_match:
+      <h2>🇮🇳 Hindi Version - Daily Net Collection</h2>
+        <div>Net Collection: Rs633.72 Cr</div>
+        <div>Verdict: All Time Blockbuster</div>
+        <div id="collection-cards-2">           <- find_next on id pattern
+          <a class="collection-card" data-day="0">
+            <div>Day 0</div>
+            <div>Rs 43Cr</div>
+            <div>star <span class="ml-1">Excellent</span></div>
+          </a>
+          ...more days...
+        </div>
+
+      <h2>🇮🇳 Telugu Version - Daily Net Collection</h2>
+        <div id="collection-cards-8"> ...       <- completely different ID
+    """
+
+    # Step 1: find the h2 for this language
+    h2 = soup.find(
+        "h2",
+        string=re.compile(
+            rf"{language}\s+Version\s*[-\u2013]\s*Daily Net Collection",
+            re.IGNORECASE,
+        ),
+    )
+    if not h2:
+        # Some pages render it as text node inside h2, not direct string
+        for tag in soup.find_all("h2"):
+            if re.search(
+                rf"{language}\s+Version\s*[-\u2013]\s*Daily Net Collection",
+                tag.get_text(),
+                re.IGNORECASE,
+            ):
+                h2 = tag
+                break
+
+    if not h2:
+        return None
+
+    # Step 2: extract Net Collection total and Verdict from siblings
+    # Only scan until the NEXT h2 (next language section)
+    total   = 0.0
+    verdict = "N/A"
+
+    for sib in h2.find_next_siblings():
+        if sib.name == "h2":
+            break  # stop at next language section
+        stext = sib.get_text(separator=" ", strip=True)
+        if "Net Collection" in stext and total == 0.0:
+            val = parse_crore(stext)
+            if val > 0:
+                total = val
+        if verdict == "N/A":
+            vm = re.search(
+                r"(All Time Blockbuster|Blockbuster|Super Hit|Hit|Average|Flop|Disaster)",
+                stext, re.IGNORECASE,
+            )
+            if vm:
+                verdict = vm.group(1)
+
+    # Step 3: find the collection-cards div AFTER this h2
+    # (find_next searches forward in document order — never looks backwards)
+    cards_div = h2.find_next("div", id=re.compile(r"^collection-cards-\d+$"))
+    if not cards_div:
+        return None
+
+    # Step 4: parse every day card
+    # Each card is: <a class="collection-card" data-day="N">
+    days = []
+    for card in cards_div.find_all("a", class_="collection-card"):
+
+        # data-day attribute — authoritative, no regex needed
+        day_attr = card.get("data-day")
+        if day_attr is None:
+            continue
+        try:
+            day_num = int(day_attr)
+        except ValueError:
             continue
 
-        lang = LANGUAGE_ALIASES.get(lang_match.group(1).lower(), lang_match.group(1))
-        section = heading.find_next_sibling() or heading.parent
+        # Amount — parse ₹ N Cr from card text
+        card_text = card.get_text(separator=" ", strip=True)
+        amount = parse_crore(card_text)
+        if amount == 0.0:
+            continue  # skip placeholder cards with no collection yet
 
-        # Walk siblings/descendants to find day cards
-        days = []
-        total = 0.0
-        verdict = "N/A"
-
-        # Look for total and verdict near this heading
-        next_els = heading.find_all_next(limit=40)
-        for el in next_els:
-            el_text = el.get_text(separator=" ", strip=True)
-
-            # Stop if we hit another language section heading
-            if el.name in ["h2", "h3", "h4"] and el != heading:
-                other_lang = re.search(
-                    r"(Hindi|Telugu|Tamil|Malayalam|Kannada)", el.get_text()
-                )
-                if other_lang and other_lang.group(1).lower() != lang.lower():
+        # Rating label — in <span class="ml-1">Excellent</span>
+        rating = "N/A"
+        span = card.find("span", class_=re.compile(r"\bml-\d\b"))
+        if span:
+            rating = span.get_text(strip=True)
+        else:
+            for label in ["Excellent", "Strong", "Good", "Average", "Low"]:
+                if label in card_text:
+                    rating = label
                     break
 
-            # Net Collection total
-            if "net collection" in el_text.lower():
-                cr_match = re.search(r"₹\s*([\d,.]+)\s*Cr", el_text)
-                if cr_match:
-                    total = float(cr_match.group(1).replace(",", ""))
+        days.append({
+            "day":        day_num,
+            "label":      f"Day {day_num}",
+            "collection": amount,
+            "rating":     rating,
+        })
 
-            # Verdict
-            verdict_match = re.search(
-                r"(All Time Blockbuster|Blockbuster|Hit|Super Hit|Flop|Average|N/A)",
-                el_text,
-                re.IGNORECASE,
-            )
-            if verdict_match and el.name not in ["h2", "h3", "h4"]:
-                verdict = verdict_match.group(1)
+    if not days:
+        return None
 
-            # Day cards — anchor tags with "Day N" pattern
-            if el.name == "a":
-                day_text = el.get_text(separator="\n", strip=True)
-                day_match = re.search(r"Day\s+(\d+)", day_text, re.IGNORECASE)
-                cr_match = re.search(r"₹\s*([\d,.]+)\s*Cr", day_text)
-                if day_match and cr_match:
-                    day_num = int(day_match.group(1))
-                    collection = float(cr_match.group(1).replace(",", ""))
-                    rating = get_rating(day_text)
-                    # Avoid duplicates
-                    if not any(d["day"] == day_num for d in days):
-                        days.append({
-                            "day": day_num,
-                            "label": f"Day {day_num}",
-                            "collection": collection,
-                            "rating": rating,
-                        })
+    days.sort(key=lambda d: d["day"])
 
-        if days:
-            days.sort(key=lambda d: d["day"])
-            languages[lang] = {
-                "total": total or sum(d["collection"] for d in days),
-                "verdict": verdict,
-                "days": days,
-            }
+    if total == 0.0:
+        total = round(sum(d["collection"] for d in days), 2)
 
-    # Strategy 2 (fallback): regex on raw page text if soup parsing missed languages
-    lang_section_pattern = (
-        r"(Hindi|Telugu|Tamil|Malayalam|Kannada)\s+Version.*?"
-        r"Net Collection.*?₹\s*([\d,.]+)\s*Cr"
-    )
-    for m in re.finditer(lang_section_pattern, page_text, re.IGNORECASE | re.DOTALL):
-        lang_key = LANGUAGE_ALIASES.get(m.group(1).lower(), m.group(1))
-        if lang_key not in languages:
-            languages[lang_key] = {
-                "total": float(m.group(2).replace(",", "")),
-                "verdict": "N/A",
-                "days": [],
-            }
-
-    return languages
+    return {
+        "total":   total,
+        "verdict": verdict,
+        "days":    days,
+    }
 
 
 def build_combined_daywise(languages: dict) -> list:
-    """Sum all languages per day to build combined India Net day-wise list."""
+    """Sum all languages per day for the combined India Net day-wise table."""
     combined = {}
-    day_labels = {}
-
-    for lang, lang_data in languages.items():
-        for day_entry in lang_data.get("days", []):
-            d = day_entry["day"]
-            combined[d] = combined.get(d, 0.0) + day_entry["collection"]
-            if d not in day_labels:
-                day_labels[d] = day_entry.get("label", f"Day {d}")
-
-    result = []
-    for day in sorted(combined.keys()):
-        result.append({
-            "day": day,
-            "label": day_labels.get(day, f"Day {day}"),
-            "india_net": round(combined[day], 2),
-        })
-    return result
+    for lang_data in languages.values():
+        for d in lang_data.get("days", []):
+            combined[d["day"]] = round(
+                combined.get(d["day"], 0.0) + d["collection"], 2
+            )
+    return [
+        {"day": day, "label": f"Day {day}", "india_net": total}
+        for day, total in sorted(combined.items())
+    ]
 
 
-def merge_with_existing(new_data: dict, existing_data: dict) -> dict:
+def merge_with_existing(new_data: dict, existing: dict) -> dict:
     """
-    Merge new scraped data with existing data.json, preserving
-    days that the scraper may have missed (e.g. if page updates late).
+    Merge new scraped data into existing data.json.
+    - New days overwrite existing (sacnilk may update/correct figures)
+    - Days present in existing but absent from new scrape are preserved
+    - Summary fields kept from existing when new scrape returns 0
     """
     merged = new_data.copy()
+    merged["languages"] = {}
 
-    # Merge each language: keep existing days not returned by new scrape
-    for lang, existing_lang in existing_data.get("languages", {}).items():
-        if lang not in merged["languages"]:
-            merged["languages"][lang] = existing_lang
-            continue
+    all_langs = set(
+        list(new_data.get("languages", {}).keys()) +
+        list(existing.get("languages", {}).keys())
+    )
 
-        new_days = {d["day"]: d for d in merged["languages"][lang].get("days", [])}
-        for existing_day in existing_lang.get("days", []):
-            if existing_day["day"] not in new_days:
-                merged["languages"][lang]["days"].append(existing_day)
+    for lang in all_langs:
+        new_lang = new_data.get("languages", {}).get(lang)
+        old_lang = existing.get("languages", {}).get(lang)
 
-        merged["languages"][lang]["days"].sort(key=lambda d: d["day"])
+        if new_lang and old_lang:
+            old_days = {d["day"]: d for d in old_lang.get("days", [])}
+            new_days = {d["day"]: d for d in new_lang.get("days", [])}
+            merged_days = {**old_days, **new_days}  # new overwrites old
+            merged["languages"][lang] = {
+                "total":   new_lang["total"] or old_lang.get("total", 0.0),
+                "verdict": (
+                    new_lang["verdict"]
+                    if new_lang["verdict"] != "N/A"
+                    else old_lang.get("verdict", "N/A")
+                ),
+                "days": sorted(merged_days.values(), key=lambda d: d["day"]),
+            }
+        elif new_lang:
+            merged["languages"][lang] = new_lang
+        else:
+            merged["languages"][lang] = old_lang
 
-    # Rebuild combined from merged languages
     merged["combined_daywise"] = build_combined_daywise(merged["languages"])
 
-    # Preserve summary fields that scraper returned 0 for (data not available yet)
+    # Preserve summary totals if scraper got zero this run
     for key in ["india_gross", "india_net", "overseas", "worldwide"]:
-        if merged["summary"].get(key, 0) == 0.0:
-            merged["summary"][key] = existing_data.get("summary", {}).get(key, 0.0)
+        if merged["summary"].get(key, 0.0) == 0.0:
+            merged["summary"][key] = existing.get("summary", {}).get(key, 0.0)
+    if merged["summary"].get("verdict") == "N/A":
+        merged["summary"]["verdict"] = existing.get("summary", {}).get("verdict", "N/A")
 
     return merged
 
 
 def load_existing() -> dict:
-    """Load existing data.json if it exists."""
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -283,22 +313,25 @@ def load_existing() -> dict:
 
 
 def save(data: dict):
-    """Write updated data.json."""
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"Saved to {DATA_FILE}")
+    print(f"Saved -> {DATA_FILE}")
 
 
 def main():
     try:
         existing = load_existing()
-        scraped = scrape_movie_page()
+        scraped  = scrape_movie_page()
 
-        # Only merge if we got meaningful data
-        if scraped["languages"] or scraped["summary"]["worldwide"] > 0:
+        has_data = (
+            bool(scraped.get("languages")) or
+            scraped.get("summary", {}).get("worldwide", 0) > 0
+        )
+
+        if has_data:
             final = merge_with_existing(scraped, existing)
         else:
-            print("WARNING: Scrape returned no useful data. Keeping existing data.")
+            print("WARNING: Scrape returned no useful data -- keeping existing.")
             final = existing
             final["last_updated"] = datetime.now(timezone.utc).strftime(
                 "%Y-%m-%dT%H:%M:%SZ"
@@ -306,21 +339,31 @@ def main():
 
         # Print summary
         s = final.get("summary", {})
-        print(f"  Worldwide  : ₹{s.get('worldwide', 0):.2f} Cr")
-        print(f"  India Net  : ₹{s.get('india_net', 0):.2f} Cr")
-        print(f"  India Gross: ₹{s.get('india_gross', 0):.2f} Cr")
-        print(f"  Overseas   : ₹{s.get('overseas', 0):.2f} Cr")
+        print(f"\n-- Summary ---------------------")
+        print(f"  Worldwide  : Rs{s.get('worldwide',  0):.2f} Cr")
+        print(f"  India Net  : Rs{s.get('india_net',  0):.2f} Cr")
+        print(f"  India Gross: Rs{s.get('india_gross', 0):.2f} Cr")
+        print(f"  Overseas   : Rs{s.get('overseas',   0):.2f} Cr")
         print(f"  Verdict    : {s.get('verdict', 'N/A')}")
-        print(f"  Languages  : {list(final.get('languages', {}).keys())}")
+
+        print(f"\n-- Days per language -----------")
+        for lang, ld in final.get("languages", {}).items():
+            days     = ld.get("days", [])
+            day_nums = [str(d["day"]) for d in days]
+            print(
+                f"  {lang:<12}: {len(days)} days "
+                f"[{', '.join(day_nums)}]  "
+                f"total Rs{ld.get('total', 0):.2f} Cr"
+            )
 
         save(final)
 
     except requests.RequestException as e:
-        print(f"ERROR: Network error while fetching page: {e}")
+        print(f"ERROR: Network error: {e}")
         raise SystemExit(1)
     except Exception as e:
-        print(f"ERROR: Unexpected error: {e}")
         import traceback
+        print(f"ERROR: {e}")
         traceback.print_exc()
         raise SystemExit(1)
 
