@@ -1,17 +1,71 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-03-26T19:16:34Z",
+  "last_updated": "2026-03-26T19:34:26Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
     "india_gross": 805.32,
     "india_net": 674.17,
-    "overseas": 261.92,
+    "overseas": 937.0,
     "worldwide": 1067.24,
-    "verdict": "HIT",
-    "budget": "N"
+    "verdict": "MOVIES IN 100 CRORE CLUB, BOX OFFICE HITS.",
+    "budget": "N/A"
   },
   "languages": {
+    "Tamil": {
+      "total": 10.04,
+      "verdict": "Average",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 1.16,
+          "rating": "Low"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 0.44,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 2.95,
+          "rating": "Good"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 2.5,
+          "rating": "Average"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 1.2,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 1.15,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.9,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.9,
+          "rating": "Average"
+        }
+      ]
+    },
     "Hindi": {
       "total": 633.72,
       "verdict": "All Time Blockbuster",
@@ -42,27 +96,33 @@
         },
         {
           "day": 4,
-          "label": "Day 4\nSun",
+          "label": "Day 4",
           "collection": 107.0,
           "rating": "Excellent"
         },
         {
           "day": 5,
-          "label": "Day 5\nMon",
+          "label": "Day 5",
           "collection": 60.0,
           "rating": "Excellent"
         },
         {
           "day": 6,
-          "label": "Day 6\nTue",
+          "label": "Day 6",
           "collection": 52.0,
           "rating": "Excellent"
         },
         {
           "day": 7,
-          "label": "Day 7\nWed",
-          "collection": 44.5,
+          "label": "Day 7",
+          "collection": 45.0,
           "rating": "Strong"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 46.0,
+          "rating": "Excellent"
         }
       ]
     },
@@ -111,53 +171,65 @@
           "label": "Day 7",
           "collection": 2.5,
           "rating": "Average"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 2.5,
+          "rating": "Average"
         }
       ]
     },
-    "Tamil": {
-      "total": 10.04,
-      "verdict": "Average",
+    "Malayalam": {
+      "total": 0.69,
+      "verdict": "N/A",
       "days": [
         {
           "day": 1,
           "label": "Day 1",
-          "collection": 1.16,
+          "collection": 0.09,
           "rating": "Low"
         },
         {
           "day": 2,
           "label": "Day 2",
-          "collection": 0.44,
+          "collection": 0.01,
           "rating": "Low"
         },
         {
           "day": 3,
           "label": "Day 3",
-          "collection": 2.95,
-          "rating": "Good"
+          "collection": 0.04,
+          "rating": "Low"
         },
         {
           "day": 4,
           "label": "Day 4",
-          "collection": 2.5,
-          "rating": "Average"
+          "collection": 0.09,
+          "rating": "Low"
         },
         {
           "day": 5,
           "label": "Day 5",
-          "collection": 1.2,
+          "collection": 0.15,
           "rating": "Low"
         },
         {
           "day": 6,
           "label": "Day 6",
-          "collection": 1.15,
+          "collection": 0.15,
           "rating": "Low"
         },
         {
           "day": 7,
           "label": "Day 7",
-          "collection": 0.9,
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.1,
           "rating": "Low"
         }
       ]
@@ -207,53 +279,11 @@
           "label": "Day 7",
           "collection": 0.2,
           "rating": "Low"
-        }
-      ]
-    },
-    "Malayalam": {
-      "total": 0.69,
-      "verdict": "N/A",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 0.09,
-          "rating": "Low"
         },
         {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 0.04,
-          "rating": "Low"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.15,
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.2,
           "rating": "Low"
         }
       ]
@@ -282,23 +312,28 @@
     },
     {
       "day": 4,
-      "label": "Day 4\nSun",
+      "label": "Day 4",
       "india_net": 114.85
     },
     {
       "day": 5,
-      "label": "Day 5\nMon",
+      "label": "Day 5",
       "india_net": 65.0
     },
     {
       "day": 6,
-      "label": "Day 6\nTue",
+      "label": "Day 6",
       "india_net": 56.6
     },
     {
       "day": 7,
-      "label": "Day 7\nWed",
-      "india_net": 48.25
+      "label": "Day 7",
+      "india_net": 48.75
+    },
+    {
+      "day": 8,
+      "label": "Day 8",
+      "india_net": 49.7
     }
   ]
 }
