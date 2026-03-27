@@ -1,7 +1,7 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-03-27T13:05:22Z",
+  "last_updated": "2026-03-27T15:53:02Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
     "india_gross": 805.32,
@@ -12,117 +12,57 @@
     "budget": "N/A"
   },
   "languages": {
-    "Kannada": {
-      "total": 0.8,
-      "verdict": "N/A",
+    "Tamil": {
+      "total": 10.04,
+      "verdict": "Average",
       "days": [
         {
           "day": 1,
           "label": "Day 1",
-          "collection": 0.08,
+          "collection": 1.16,
           "rating": "Low"
         },
         {
           "day": 2,
           "label": "Day 2",
-          "collection": 0.03,
+          "collection": 0.44,
           "rating": "Low"
         },
         {
           "day": 3,
           "label": "Day 3",
-          "collection": 0.01,
-          "rating": "Low"
+          "collection": 2.95,
+          "rating": "Good"
         },
         {
           "day": 4,
           "label": "Day 4",
-          "collection": 0.01,
-          "rating": "Low"
+          "collection": 2.5,
+          "rating": "Average"
         },
         {
           "day": 5,
           "label": "Day 5",
-          "collection": 0.15,
+          "collection": 1.2,
           "rating": "Low"
         },
         {
           "day": 6,
           "label": "Day 6",
-          "collection": 0.2,
+          "collection": 1.15,
           "rating": "Low"
         },
         {
           "day": 7,
           "label": "Day 7",
-          "collection": 0.2,
+          "collection": 0.9,
           "rating": "Low"
         },
         {
           "day": 8,
           "label": "Day 8",
-          "collection": 0.2,
-          "rating": "Low"
-        }
-      ]
-    },
-    "Hindi": {
-      "total": 633.72,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 0,
-          "label": "Day 0",
-          "collection": 43.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 99.1,
-          "rating": "Excellent"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 78.94,
-          "rating": "Excellent"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 105.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 107.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 60.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 52.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 45.0,
-          "rating": "Strong"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 46.0,
-          "rating": "Excellent"
+          "collection": 0.9,
+          "rating": "Average"
         }
       ]
     },
@@ -234,57 +174,117 @@
         }
       ]
     },
-    "Tamil": {
-      "total": 10.04,
-      "verdict": "Average",
+    "Kannada": {
+      "total": 0.8,
+      "verdict": "N/A",
       "days": [
         {
           "day": 1,
           "label": "Day 1",
-          "collection": 1.16,
+          "collection": 0.08,
           "rating": "Low"
         },
         {
           "day": 2,
           "label": "Day 2",
-          "collection": 0.44,
+          "collection": 0.03,
           "rating": "Low"
         },
         {
           "day": 3,
           "label": "Day 3",
-          "collection": 2.95,
-          "rating": "Good"
+          "collection": 0.01,
+          "rating": "Low"
         },
         {
           "day": 4,
           "label": "Day 4",
-          "collection": 2.5,
-          "rating": "Average"
+          "collection": 0.01,
+          "rating": "Low"
         },
         {
           "day": 5,
           "label": "Day 5",
-          "collection": 1.2,
+          "collection": 0.15,
           "rating": "Low"
         },
         {
           "day": 6,
           "label": "Day 6",
-          "collection": 1.15,
+          "collection": 0.2,
           "rating": "Low"
         },
         {
           "day": 7,
           "label": "Day 7",
-          "collection": 0.9,
+          "collection": 0.2,
           "rating": "Low"
         },
         {
           "day": 8,
           "label": "Day 8",
-          "collection": 0.9,
-          "rating": "Average"
+          "collection": 0.2,
+          "rating": "Low"
+        }
+      ]
+    },
+    "Hindi": {
+      "total": 633.72,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 0,
+          "label": "Day 0",
+          "collection": 43.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 99.1,
+          "rating": "Excellent"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 78.94,
+          "rating": "Excellent"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 105.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 107.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 60.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 52.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 45.0,
+          "rating": "Strong"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 46.0,
+          "rating": "Excellent"
         }
       ]
     }
