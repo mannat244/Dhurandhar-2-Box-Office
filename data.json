@@ -1,17 +1,71 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-03-27T02:22:17Z",
+  "last_updated": "2026-03-27T05:06:48Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
     "india_gross": 805.32,
     "india_net": 674.17,
-    "overseas": 937.0,
+    "overseas": 2244.0,
     "worldwide": 1067.24,
     "verdict": "MOVIES IN 100 CRORE CLUB, BOX OFFICE HITS.",
     "budget": "N/A"
   },
   "languages": {
+    "Telugu": {
+      "total": 23.15,
+      "verdict": "Average",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 2.12,
+          "rating": "Average"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 1.3,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 5.0,
+          "rating": "Good"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 5.25,
+          "rating": "Good"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 3.5,
+          "rating": "Good"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 3.1,
+          "rating": "Good"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 2.5,
+          "rating": "Average"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 2.5,
+          "rating": "Average"
+        }
+      ]
+    },
     "Kannada": {
       "total": 0.8,
       "verdict": "N/A",
@@ -66,110 +120,56 @@
         }
       ]
     },
-    "Malayalam": {
-      "total": 0.69,
-      "verdict": "N/A",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 0.04,
-          "rating": "Low"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 0.1,
-          "rating": "Low"
-        }
-      ]
-    },
-    "Telugu": {
-      "total": 23.15,
+    "Tamil": {
+      "total": 10.04,
       "verdict": "Average",
       "days": [
         {
           "day": 1,
           "label": "Day 1",
-          "collection": 2.12,
-          "rating": "Average"
+          "collection": 1.16,
+          "rating": "Low"
         },
         {
           "day": 2,
           "label": "Day 2",
-          "collection": 1.3,
+          "collection": 0.44,
           "rating": "Low"
         },
         {
           "day": 3,
           "label": "Day 3",
-          "collection": 5.0,
+          "collection": 2.95,
           "rating": "Good"
         },
         {
           "day": 4,
           "label": "Day 4",
-          "collection": 5.25,
-          "rating": "Good"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 3.5,
-          "rating": "Good"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 3.1,
-          "rating": "Good"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
           "collection": 2.5,
           "rating": "Average"
         },
         {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 1.2,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 1.15,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.9,
+          "rating": "Low"
+        },
+        {
           "day": 8,
           "label": "Day 8",
-          "collection": 2.5,
+          "collection": 0.9,
           "rating": "Average"
         }
       ]
@@ -234,57 +234,57 @@
         }
       ]
     },
-    "Tamil": {
-      "total": 10.04,
-      "verdict": "Average",
+    "Malayalam": {
+      "total": 0.69,
+      "verdict": "N/A",
       "days": [
         {
           "day": 1,
           "label": "Day 1",
-          "collection": 1.16,
+          "collection": 0.09,
           "rating": "Low"
         },
         {
           "day": 2,
           "label": "Day 2",
-          "collection": 0.44,
+          "collection": 0.01,
           "rating": "Low"
         },
         {
           "day": 3,
           "label": "Day 3",
-          "collection": 2.95,
-          "rating": "Good"
+          "collection": 0.04,
+          "rating": "Low"
         },
         {
           "day": 4,
           "label": "Day 4",
-          "collection": 2.5,
-          "rating": "Average"
+          "collection": 0.09,
+          "rating": "Low"
         },
         {
           "day": 5,
           "label": "Day 5",
-          "collection": 1.2,
+          "collection": 0.15,
           "rating": "Low"
         },
         {
           "day": 6,
           "label": "Day 6",
-          "collection": 1.15,
+          "collection": 0.15,
           "rating": "Low"
         },
         {
           "day": 7,
           "label": "Day 7",
-          "collection": 0.9,
+          "collection": 0.15,
           "rating": "Low"
         },
         {
           "day": 8,
           "label": "Day 8",
-          "collection": 0.9,
-          "rating": "Average"
+          "collection": 0.1,
+          "rating": "Low"
         }
       ]
     }
