@@ -1,7 +1,7 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-03-31T13:17:28Z",
+  "last_updated": "2026-03-31T16:05:17Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
     "india_gross": 1042.23,
@@ -12,84 +12,6 @@
     "budget": "N/A"
   },
   "languages": {
-    "Kannada": {
-      "total": 1.98,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 0.08,
-          "rating": "Low"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 9,
-          "label": "Day 9",
-          "collection": 0.22,
-          "rating": "Low"
-        },
-        {
-          "day": 10,
-          "label": "Day 10",
-          "collection": 0.3,
-          "rating": "Low"
-        },
-        {
-          "day": 11,
-          "label": "Day 11",
-          "collection": 0.38,
-          "rating": "Low"
-        },
-        {
-          "day": 12,
-          "label": "Day 12",
-          "collection": 0.2,
-          "rating": "Low"
-        }
-      ]
-    },
     "Hindi": {
       "total": 818.04,
       "verdict": "All Time Blockbuster",
@@ -404,6 +326,84 @@
           "day": 12,
           "label": "Day 12",
           "collection": 0.35,
+          "rating": "Low"
+        }
+      ]
+    },
+    "Kannada": {
+      "total": 1.98,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 0.08,
+          "rating": "Low"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 9,
+          "label": "Day 9",
+          "collection": 0.22,
+          "rating": "Low"
+        },
+        {
+          "day": 10,
+          "label": "Day 10",
+          "collection": 0.3,
+          "rating": "Low"
+        },
+        {
+          "day": 11,
+          "label": "Day 11",
+          "collection": 0.38,
+          "rating": "Low"
+        },
+        {
+          "day": 12,
+          "label": "Day 12",
+          "collection": 0.2,
           "rating": "Low"
         }
       ]
