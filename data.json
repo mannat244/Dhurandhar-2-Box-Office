@@ -1,12 +1,12 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-04-01T02:32:43Z",
+  "last_updated": "2026-04-01T05:24:03Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
     "india_gross": 1077.41,
     "india_net": 899.92,
-    "overseas": 358.0,
+    "overseas": 1000.0,
     "worldwide": 1435.41,
     "verdict": "MOVIES IN 100 CRORE CLUB, BOX OFFICE HITS.",
     "budget": "N/A"
@@ -93,6 +93,96 @@
           "label": "Day 13",
           "collection": 0.55,
           "rating": "Low"
+        }
+      ]
+    },
+    "Hindi": {
+      "total": 844.04,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 0,
+          "label": "Day 0",
+          "collection": 43.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 99.1,
+          "rating": "Excellent"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 78.94,
+          "rating": "Excellent"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 105.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 107.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 60.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 52.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 45.0,
+          "rating": "Strong"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 46.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 9,
+          "label": "Day 9",
+          "collection": 37.5,
+          "rating": "Excellent"
+        },
+        {
+          "day": 10,
+          "label": "Day 10",
+          "collection": 58.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 11,
+          "label": "Day 11",
+          "collection": 63.0,
+          "rating": "Excellent"
+        },
+        {
+          "day": 12,
+          "label": "Day 12",
+          "collection": 23.5,
+          "rating": "Strong"
+        },
+        {
+          "day": 13,
+          "label": "Day 13",
+          "collection": 26.0,
+          "rating": "Excellent"
         }
       ]
     },
@@ -345,96 +435,6 @@
           "label": "Day 13",
           "collection": 0.15,
           "rating": "Low"
-        }
-      ]
-    },
-    "Hindi": {
-      "total": 844.04,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 0,
-          "label": "Day 0",
-          "collection": 43.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 99.1,
-          "rating": "Excellent"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 78.94,
-          "rating": "Excellent"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 105.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 107.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 60.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 52.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 45.0,
-          "rating": "Strong"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 46.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 9,
-          "label": "Day 9",
-          "collection": 37.5,
-          "rating": "Excellent"
-        },
-        {
-          "day": 10,
-          "label": "Day 10",
-          "collection": 58.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 11,
-          "label": "Day 11",
-          "collection": 63.0,
-          "rating": "Excellent"
-        },
-        {
-          "day": 12,
-          "label": "Day 12",
-          "collection": 23.5,
-          "rating": "Strong"
-        },
-        {
-          "day": 13,
-          "label": "Day 13",
-          "collection": 26.0,
-          "rating": "Excellent"
         }
       ]
     }
