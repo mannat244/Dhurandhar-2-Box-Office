@@ -1,19 +1,19 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-04-10T15:52:53Z",
+  "last_updated": "2026-04-10T18:51:53Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
-    "india_gross": 1255.23,
-    "india_net": 1048.42,
-    "overseas": 406.0,
-    "worldwide": 1661.23,
+    "india_gross": 1263.26,
+    "india_net": 1055.12,
+    "overseas": 408.0,
+    "worldwide": 1671.26,
     "verdict": "MOVIES IN 100 CRORE CLUB, BOX OFFICE HITS.",
     "budget": "N/A"
   },
   "languages": {
     "Telugu": {
-      "total": 41.22,
+      "total": 41.31,
       "verdict": "All Time Blockbuster",
       "days": [
         {
@@ -147,11 +147,17 @@
           "label": "Day 22",
           "collection": 0.2,
           "rating": "Low"
+        },
+        {
+          "day": 23,
+          "label": "Day 23",
+          "collection": 0.09,
+          "rating": "Low"
         }
       ]
     },
     "Kannada": {
-      "total": 3.18,
+      "total": 3.21,
       "verdict": "All Time Blockbuster",
       "days": [
         {
@@ -285,11 +291,305 @@
           "label": "Day 22",
           "collection": 0.07,
           "rating": "Low"
+        },
+        {
+          "day": 23,
+          "label": "Day 23",
+          "collection": 0.03,
+          "rating": "Low"
+        }
+      ]
+    },
+    "Tamil": {
+      "total": 18.56,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 1.16,
+          "rating": "Low"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 0.44,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 2.95,
+          "rating": "Good"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 2.5,
+          "rating": "Average"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 1.2,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 1.15,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.9,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.9,
+          "rating": "Low"
+        },
+        {
+          "day": 9,
+          "label": "Day 9",
+          "collection": 0.9,
+          "rating": "Average"
+        },
+        {
+          "day": 10,
+          "label": "Day 10",
+          "collection": 1.4,
+          "rating": "Average"
+        },
+        {
+          "day": 11,
+          "label": "Day 11",
+          "collection": 1.5,
+          "rating": "Average"
+        },
+        {
+          "day": 12,
+          "label": "Day 12",
+          "collection": 0.35,
+          "rating": "Low"
+        },
+        {
+          "day": 13,
+          "label": "Day 13",
+          "collection": 0.55,
+          "rating": "Low"
+        },
+        {
+          "day": 14,
+          "label": "Day 14",
+          "collection": 0.3,
+          "rating": "Low"
+        },
+        {
+          "day": 15,
+          "label": "Day 15",
+          "collection": 0.3,
+          "rating": "Low"
+        },
+        {
+          "day": 16,
+          "label": "Day 16",
+          "collection": 0.45,
+          "rating": "Low"
+        },
+        {
+          "day": 17,
+          "label": "Day 17",
+          "collection": 0.5,
+          "rating": "Low"
+        },
+        {
+          "day": 18,
+          "label": "Day 18",
+          "collection": 0.5,
+          "rating": "Low"
+        },
+        {
+          "day": 19,
+          "label": "Day 19",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 20,
+          "label": "Day 20",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 21,
+          "label": "Day 21",
+          "collection": 0.12,
+          "rating": "Low"
+        },
+        {
+          "day": 22,
+          "label": "Day 22",
+          "collection": 0.12,
+          "rating": "Low"
+        },
+        {
+          "day": 23,
+          "label": "Day 23",
+          "collection": 0.07,
+          "rating": "Low"
+        }
+      ]
+    },
+    "Malayalam": {
+      "total": 1.75,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 0.09,
+          "rating": "Low"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 0.04,
+          "rating": "Low"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 0.09,
+          "rating": "Low"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.1,
+          "rating": "Low"
+        },
+        {
+          "day": 9,
+          "label": "Day 9",
+          "collection": 0.13,
+          "rating": "Low"
+        },
+        {
+          "day": 10,
+          "label": "Day 10",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 11,
+          "label": "Day 11",
+          "collection": 0.22,
+          "rating": "Low"
+        },
+        {
+          "day": 12,
+          "label": "Day 12",
+          "collection": 0.1,
+          "rating": "Low"
+        },
+        {
+          "day": 13,
+          "label": "Day 13",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 14,
+          "label": "Day 14",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 15,
+          "label": "Day 15",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 16,
+          "label": "Day 16",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 17,
+          "label": "Day 17",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 18,
+          "label": "Day 18",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 19,
+          "label": "Day 19",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 20,
+          "label": "Day 20",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 21,
+          "label": "Day 21",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 22,
+          "label": "Day 22",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 23,
+          "label": "Day 23",
+          "collection": 0.01,
+          "rating": "Low"
         }
       ]
     },
     "Hindi": {
-      "total": 983.79,
+      "total": 990.29,
       "verdict": "All Time Blockbuster",
       "days": [
         {
@@ -429,282 +729,12 @@
           "label": "Day 22",
           "collection": 6.75,
           "rating": "Average"
-        }
-      ]
-    },
-    "Malayalam": {
-      "total": 1.74,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 0.09,
-          "rating": "Low"
         },
         {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 0.04,
-          "rating": "Low"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 0.1,
-          "rating": "Low"
-        },
-        {
-          "day": 9,
-          "label": "Day 9",
-          "collection": 0.13,
-          "rating": "Low"
-        },
-        {
-          "day": 10,
-          "label": "Day 10",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 11,
-          "label": "Day 11",
-          "collection": 0.22,
-          "rating": "Low"
-        },
-        {
-          "day": 12,
-          "label": "Day 12",
-          "collection": 0.1,
-          "rating": "Low"
-        },
-        {
-          "day": 13,
-          "label": "Day 13",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 14,
-          "label": "Day 14",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 15,
-          "label": "Day 15",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 16,
-          "label": "Day 16",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 17,
-          "label": "Day 17",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 18,
-          "label": "Day 18",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 19,
-          "label": "Day 19",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 20,
-          "label": "Day 20",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 21,
-          "label": "Day 21",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 22,
-          "label": "Day 22",
-          "collection": 0.01,
-          "rating": "Low"
-        }
-      ]
-    },
-    "Tamil": {
-      "total": 18.49,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 1.16,
-          "rating": "Low"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.44,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 2.95,
-          "rating": "Good"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 2.5,
+          "day": 23,
+          "label": "Day 23",
+          "collection": 6.5,
           "rating": "Average"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 1.2,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 1.15,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.9,
-          "rating": "Low"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 0.9,
-          "rating": "Low"
-        },
-        {
-          "day": 9,
-          "label": "Day 9",
-          "collection": 0.9,
-          "rating": "Average"
-        },
-        {
-          "day": 10,
-          "label": "Day 10",
-          "collection": 1.4,
-          "rating": "Average"
-        },
-        {
-          "day": 11,
-          "label": "Day 11",
-          "collection": 1.5,
-          "rating": "Average"
-        },
-        {
-          "day": 12,
-          "label": "Day 12",
-          "collection": 0.35,
-          "rating": "Low"
-        },
-        {
-          "day": 13,
-          "label": "Day 13",
-          "collection": 0.55,
-          "rating": "Low"
-        },
-        {
-          "day": 14,
-          "label": "Day 14",
-          "collection": 0.3,
-          "rating": "Low"
-        },
-        {
-          "day": 15,
-          "label": "Day 15",
-          "collection": 0.3,
-          "rating": "Low"
-        },
-        {
-          "day": 16,
-          "label": "Day 16",
-          "collection": 0.45,
-          "rating": "Low"
-        },
-        {
-          "day": 17,
-          "label": "Day 17",
-          "collection": 0.5,
-          "rating": "Low"
-        },
-        {
-          "day": 18,
-          "label": "Day 18",
-          "collection": 0.5,
-          "rating": "Low"
-        },
-        {
-          "day": 19,
-          "label": "Day 19",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 20,
-          "label": "Day 20",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 21,
-          "label": "Day 21",
-          "collection": 0.12,
-          "rating": "Low"
-        },
-        {
-          "day": 22,
-          "label": "Day 22",
-          "collection": 0.12,
-          "rating": "Low"
         }
       ]
     }
@@ -824,6 +854,11 @@
       "day": 22,
       "label": "Day 22",
       "india_net": 7.15
+    },
+    {
+      "day": 23,
+      "label": "Day 23",
+      "india_net": 6.7
     }
   ]
 }
