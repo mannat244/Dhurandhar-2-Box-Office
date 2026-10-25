@@ -1,14 +1,14 @@
 {
   "movie": "Dhurandhar 2: The Revenge",
   "release_date": "2026-03-19",
-  "last_updated": "2026-10-25T10:46:16Z",
+  "last_updated": "2026-10-25T15:35:10Z",
   "source": "https://www.sacnilk.com/movie/Dhurandhar_2_2026",
   "summary": {
     "india_gross": 1375.39,
     "india_net": 1149.3,
     "overseas": 438.0,
     "worldwide": 1813.39,
-    "verdict": "WINDOW.DATALAYER = WINDOW.DATALAYER || [];\n    FUNCTION GTAG(){DATALAYER.PUSH(ARGUMENTS);}\n    GTAG('JS', NEW DATE());\n    // THE THEME THIS PAGE OPENED IN AND THE RULE THAT PICKED IT (COMPONENTS/THEMEMODE.PHP), ON THE PAGE VIEW AND THE\n    // EVENTS AFTER IT; A MOON TAP DURING THE VISIT DOES NOT CHANGE IT. GIVEN TO CONFIG: GA4 LEAVES CUSTOM VALUES\n    // GIVEN WITH GTAG('SET') OFF ITS HITS.\n    GTAG('CONFIG', 'G-HNL593YJ9N', { THEME: DOCUMENT.DOCUMENTELEMENT.CLASSLIST.CONTAINS('DARK') ? 'DARK' : 'LIGHT',\n                                     THEME_SOURCE: DOCUMENT.DOCUMENTELEMENT.GETATTRIBUTE('DATA-THEME-SOURCE') || 'SAVED' });\n    // SACNILK GLOBAL VARIABLES\n    WINDOW.SACNILK = WINDOW.SACNILK || {};\n    WINDOW.SACNILK.CDN_URL = \"HTTPS://CDN.SACNILK.COM\";\n    WINDOW.SACNILK.DEFAULT_IMAGE_URL = \"HTTPS://CDN.SACNILK.COM/IMAGE/SNCI.JPG\";\n    WINDOW.SACNILK.POSTER_PLACEHOLDER = \"HTTPS://CDN.SACNILK.COM/IMAGE/PLACEHOLDER/POSTER-V1.JPG\";\n    WINDOW.SACNILK.BASE_PATH = \"\";\n    // THE HEADER'S FEEDBACK LINKS (ONCLICK=\"SETFEEDBACKSOURCE(THIS)\"): REMEMBER THE PAGE THE READER WAS ON, SO THE\n    // FEEDBACK FORM SHOWS \"FEEDBACK ABOUT THIS PAGE\" AND SENDS IT AS URL/TITLE. PAGES/FEEDBACK.PHP READS AND CLEARS IT.\n    WINDOW.SETFEEDBACKSOURCE = FUNCTION () {\n        TRY {\n            LOCALSTORAGE.SETITEM(\"FEEDBACKSOURCEURL\", LOCATION.HREF);\n            LOCALSTORAGE.SETITEM(\"FEEDBACKSOURCETITLE\", DOCUMENT.TITLE);\n            LOCALSTORAGE.SETITEM(\"FEEDBACKSOURCEAT\", STRING(DATE.NOW()));\n        } CATCH (E) {}\n    };\n    \n    \n   \n    // WHAT THE PAGE KNOWS ABOUT THE VISITOR, AND EVERYTHING THAT FOLLOWS FROM IT\n    FUNCTION APPLYUSERDATA(USERDATA) {\n        WINDOW.ISLOGGEDIN = USERDATA.ISLOGGEDIN;\n        WINDOW.USERNAME = USERDATA.USERNAME;\n        WINDOW.USERLEVEL = USERDATA.USERLEVEL;\n        WINDOW.USERID = USERDATA.USERID;\n\n        // UPDATE UI IF FUNCTION EXISTS\n        IF (TYPEOF UPDATEUSERINTERFACE === 'FUNCTION') {\n            UPDATEUSERINTERFACE();\n        }\n        // FOR WIDGETS ON CACHED PAGES THAT DEPEND ON WHO IS LOOKING (MOVIE RATING)\n        WINDOW.SACNILKUSER = USERDATA;\n        DOCUMENT.DISPATCHEVENT(NEW CUSTOMEVENT('SACNILK:USER', { DETAIL: USERDATA }));\n    }\n\n    // SN_LI=1 IS SET AT LOGIN AND CLEARED AT LOGOUT (WEBCONFIG/SESSION-BOOTSTRAP.PHP). WITHOUT IT NOBODY IS LOGGED\n    // IN HERE, AND THE PAGE SAYS SO ITSELF, WITH THE SAME ANSWER API/USER-DATA.PHP GIVES A VISITOR WITH NO SESSION.\n    FUNCTION MAYBELOGGEDIN() {\n        RETURN /(?:^|;\\S*)SN_LI=1(?:;|$)/.TEST(DOCUMENT.COOKIE);\n    }\n    // MY SACNILK, THE PERSONAL LAYER OF A LOGGED-IN READER (ASSETS/JS/SN-ME.JS). THIS PAGE IS THE SAME STORED COPY\n    // FOR EVERYONE, SO THE LAYER IS LOADED ONLY FOR A BROWSER THAT CARRIES THE LOGIN HINT; NOBODY ELSE DOWNLOADS IT.\n    // THE CLASSES GO ON <HTML> HERE, BEFORE FIRST PAINT: SN-LI = MAY BE LOGGED IN, SN-ME-ON = THIS BROWSER HAD THE\n    // LAYER ON ITS LAST PAGE (SO THE HOME PAGE KEEPS ROOM FOR \"MY FILMS\" AND DOES NOT JUMP).\n    (FUNCTION () {\n        VAR DE = DOCUMENT.DOCUMENTELEMENT;\n        DE.CLASSLIST.ADD('SN-FOLLOW-ON');   // THE FOLLOW BUTTONS ARE SHOWN TO EVERY READER\n        IF (MAYBELOGGEDIN()) {\n            DE.CLASSLIST.ADD('SN-LI');\n            TRY { IF (LOCALSTORAGE.GETITEM('SN-ME') === '1') { DE.CLASSLIST.ADD('SN-ME-ON'); } } CATCH (E) {}\n            VAR CSS = DOCUMENT.CREATEELEMENT('LINK');\n            CSS.REL = 'STYLESHEET';\n            CSS.HREF = \"/ASSETS/CSS/SN-ME.CSS?V=1792912000\";\n            VAR JS = DOCUMENT.CREATEELEMENT('SCRIPT');\n            JS.SRC = \"/ASSETS/JS/SN-ME.JS?V=1792912001\";\n            JS.DEFER = TRUE;\n            DOCUMENT.HEAD.APPENDCHILD(CSS);\n            DOCUMENT.HEAD.APPENDCHILD(JS);\n            RETURN;\n        }\n        // A LOGGED-OUT TAP ON A FOLLOW BUTTON: REMEMBER THE FILM, LOG IN, AND COME BACK TO THIS PAGE FOLLOWING IT\n        // (SN-ME.JS COMPLETES THE FOLLOW ONCE THE READER IS BACK AND LOGGED IN).\n        DOCUMENT.ADDEVENTLISTENER('CLICK', FUNCTION (E) {\n            VAR B = E.TARGET && E.TARGET.CLOSEST ? E.TARGET.CLOSEST('[DATA-FOLLOW-FILM]') : NULL;\n            IF (!B) { RETURN; }\n            E.PREVENTDEFAULT();\n            TRY { SESSIONSTORAGE.SETITEM('SN-FOLLOW-PENDING', JSON.STRINGIFY({ ID: B.GETATTRIBUTE('DATA-FOLLOW-FILM'), T: DATE.NOW() })); } CATCH (ERR) {}\n            VAR BASE = WINDOW.SACNILK.BASE_PATH || '', PATH = LOCATION.PATHNAME;\n            IF (BASE && PATH.INDEXOF(BASE + '/') === 0) { PATH = PATH.SLICE(BASE.LENGTH); }\n            WINDOW.LOCATION.HREF = BASE + '/LOGIN?REDIRECT=' + ENCODEURICOMPONENT(PATH + LOCATION.SEARCH);\n        });\n    })();\n    FUNCTION LOADUSERDATAIFLOGGEDIN() {\n        IF (MAYBELOGGEDIN()) {\n            RETURN LOADUSERDATA();\n        }\n        APPLYUSERDATA({ ISLOGGEDIN: FALSE, USERNAME: '', USERLEVEL: 1, USERID: '', TIMESTAMP: MATH.FLOOR(DATE.NOW() / 1000) });\n    }\n\n    // LOAD USER DATA DYNAMICALLY\n    // FRESH === TRUE (AFTER A LOGIN ON THIS PAGE, E.G. THE RATING WIDGET): BYPASS THE 60 S BROWSER COPY OF THE\n    // LOGGED-OUT ANSWER\n    ASYNC FUNCTION LOADUSERDATA(FRESH) {\n        TRY {\n            LET APIURL = '/API/USER-DATA.PHP';\n            IF(WINDOW.LOCATION.HOSTNAME === 'LOCALHOST') {\n                APIURL = '/SACWEB/API/USER-DATA.PHP';\n            }\n            CONST RESPONSE = FRESH === TRUE\n                ? AWAIT FETCH(APIURL + '?T=' + DATE.NOW(), { CACHE: 'NO-STORE', CREDENTIALS: 'SAME-ORIGIN' })\n                : AWAIT FETCH(APIURL);\n            CONST RESULT = AWAIT RESPONSE.JSON();\n            \n            IF (RESULT.SUCCESS && RESULT.DATA) {\n                // NOT LOGGED IN AFTER ALL (EXPIRED, OR LOGGED OUT ELSEWHERE): DROP THE HINT, SO THE NEXT PAGE ASKS NOTHING\n                IF (!RESULT.DATA.ISLOGGEDIN) {\n                    DOCUMENT.COOKIE = 'SN_LI=; MAX-AGE=0; PATH=/';\n                }\n                APPLYUSERDATA(RESULT.DATA);\n                //CONSOLE.LOG('USER DATA LOADED:', USERDATA);\n            } ELSE {\n                CONSOLE.WARN('FAILED TO LOAD USER DATA:', RESULT.MESSAGE);\n            }\n        } CATCH (ERROR) {\n            CONSOLE.ERROR('FAILED TO LOAD USER DATA:', ERROR);\n        }\n    }\n    \n    // LOAD ON PAGE LOAD, FOR A VISITOR WHO MAY BE LOGGED IN\n    DOCUMENT.ADDEVENTLISTENER('DOMCONTENTLOADED', LOADUSERDATAIFLOGGEDIN);\n    WINDOW.SACNILKRELOADUSER = FUNCTION () { RETURN LOADUSERDATA(TRUE); };\n    // A PAGE RESTORED FROM THE BACK/FORWARD CACHE KEEPS THE LOGIN STATE IT WAS FIRST DRAWN WITH: REFRESH IT\n    WINDOW.ADDEVENTLISTENER('PAGESHOW', FUNCTION (E) { IF (E.PERSISTED) { LOADUSERDATAIFLOGGEDIN(); } });",
+    "verdict": "WINDOW.DATALAYER = WINDOW.DATALAYER || [];\n    FUNCTION GTAG(){DATALAYER.PUSH(ARGUMENTS);}\n    GTAG('JS', NEW DATE());\n    // THE THEME THIS PAGE OPENED IN AND THE RULE THAT PICKED IT (COMPONENTS/THEMEMODE.PHP), ON THE PAGE VIEW AND THE\n    // EVENTS AFTER IT; A MOON TAP DURING THE VISIT DOES NOT CHANGE IT. GIVEN TO CONFIG: GA4 LEAVES CUSTOM VALUES\n    // GIVEN WITH GTAG('SET') OFF ITS HITS.\n    GTAG('CONFIG', 'G-HNL593YJ9N', { THEME: DOCUMENT.DOCUMENTELEMENT.CLASSLIST.CONTAINS('DARK') ? 'DARK' : 'LIGHT',\n                                     THEME_SOURCE: DOCUMENT.DOCUMENTELEMENT.GETATTRIBUTE('DATA-THEME-SOURCE') || 'SAVED' });\n    // SACNILK GLOBAL VARIABLES\n    WINDOW.SACNILK = WINDOW.SACNILK || {};\n    WINDOW.SACNILK.CDN_URL = \"HTTPS://CDN.SACNILK.COM\";\n    WINDOW.SACNILK.DEFAULT_IMAGE_URL = \"HTTPS://CDN.SACNILK.COM/IMAGE/SNCI.JPG\";\n    WINDOW.SACNILK.POSTER_PLACEHOLDER = \"HTTPS://CDN.SACNILK.COM/IMAGE/PLACEHOLDER/POSTER-V1.JPG\";\n    WINDOW.SACNILK.BASE_PATH = \"\";\n    // THE HEADER'S FEEDBACK LINKS (ONCLICK=\"SETFEEDBACKSOURCE(THIS)\"): REMEMBER THE PAGE THE READER WAS ON, SO THE\n    // FEEDBACK FORM SHOWS \"FEEDBACK ABOUT THIS PAGE\" AND SENDS IT AS URL/TITLE. PAGES/FEEDBACK.PHP READS AND CLEARS IT.\n    WINDOW.SETFEEDBACKSOURCE = FUNCTION () {\n        TRY {\n            LOCALSTORAGE.SETITEM(\"FEEDBACKSOURCEURL\", LOCATION.HREF);\n            LOCALSTORAGE.SETITEM(\"FEEDBACKSOURCETITLE\", DOCUMENT.TITLE);\n            LOCALSTORAGE.SETITEM(\"FEEDBACKSOURCEAT\", STRING(DATE.NOW()));\n        } CATCH (E) {}\n    };\n    \n    \n   \n    // WHAT THE PAGE KNOWS ABOUT THE VISITOR, AND EVERYTHING THAT FOLLOWS FROM IT\n    FUNCTION APPLYUSERDATA(USERDATA) {\n        WINDOW.ISLOGGEDIN = USERDATA.ISLOGGEDIN;\n        WINDOW.USERNAME = USERDATA.USERNAME;\n        WINDOW.USERLEVEL = USERDATA.USERLEVEL;\n        WINDOW.USERID = USERDATA.USERID;\n\n        // UPDATE UI IF FUNCTION EXISTS\n        IF (TYPEOF UPDATEUSERINTERFACE === 'FUNCTION') {\n            UPDATEUSERINTERFACE();\n        }\n        // FOR WIDGETS ON CACHED PAGES THAT DEPEND ON WHO IS LOOKING (MOVIE RATING)\n        WINDOW.SACNILKUSER = USERDATA;\n        DOCUMENT.DISPATCHEVENT(NEW CUSTOMEVENT('SACNILK:USER', { DETAIL: USERDATA }));\n    }\n\n    // SN_LI=1 IS SET AT LOGIN AND CLEARED AT LOGOUT (WEBCONFIG/SESSION-BOOTSTRAP.PHP). WITHOUT IT NOBODY IS LOGGED\n    // IN HERE, AND THE PAGE SAYS SO ITSELF, WITH THE SAME ANSWER API/USER-DATA.PHP GIVES A VISITOR WITH NO SESSION.\n    FUNCTION MAYBELOGGEDIN() {\n        RETURN /(?:^|;\\S*)SN_LI=1(?:;|$)/.TEST(DOCUMENT.COOKIE);\n    }\n    // MY SACNILK, THE PERSONAL LAYER OF A LOGGED-IN READER (ASSETS/JS/SN-ME.JS). THIS PAGE IS THE SAME STORED COPY\n    // FOR EVERYONE, SO THE LAYER IS LOADED ONLY FOR A BROWSER THAT CARRIES THE LOGIN HINT; NOBODY ELSE DOWNLOADS IT.\n    // THE CLASSES GO ON <HTML> HERE, BEFORE FIRST PAINT: SN-LI = MAY BE LOGGED IN, SN-ME-ON = THIS BROWSER HAD THE\n    // LAYER ON ITS LAST PAGE (SO THE HOME PAGE KEEPS ROOM FOR \"MY FILMS\" AND DOES NOT JUMP).\n    (FUNCTION () {\n        VAR DE = DOCUMENT.DOCUMENTELEMENT;\n        DE.CLASSLIST.ADD('SN-FOLLOW-ON');   // THE FOLLOW BUTTONS ARE SHOWN TO EVERY READER\n        IF (MAYBELOGGEDIN()) {\n            DE.CLASSLIST.ADD('SN-LI');\n            TRY { IF (LOCALSTORAGE.GETITEM('SN-ME') === '1') { DE.CLASSLIST.ADD('SN-ME-ON'); } } CATCH (E) {}\n            VAR CSS = DOCUMENT.CREATEELEMENT('LINK');\n            CSS.REL = 'STYLESHEET';\n            CSS.HREF = \"/ASSETS/CSS/SN-ME.CSS?V=1792938410\";\n            VAR JS = DOCUMENT.CREATEELEMENT('SCRIPT');\n            JS.SRC = \"/ASSETS/JS/SN-ME.JS?V=1792938411\";\n            JS.DEFER = TRUE;\n            DOCUMENT.HEAD.APPENDCHILD(CSS);\n            DOCUMENT.HEAD.APPENDCHILD(JS);\n            RETURN;\n        }\n        // A LOGGED-OUT TAP ON A FOLLOW BUTTON: REMEMBER THE FILM, LOG IN, AND COME BACK TO THIS PAGE FOLLOWING IT\n        // (SN-ME.JS COMPLETES THE FOLLOW ONCE THE READER IS BACK AND LOGGED IN).\n        DOCUMENT.ADDEVENTLISTENER('CLICK', FUNCTION (E) {\n            VAR B = E.TARGET && E.TARGET.CLOSEST ? E.TARGET.CLOSEST('[DATA-FOLLOW-FILM]') : NULL;\n            IF (!B) { RETURN; }\n            E.PREVENTDEFAULT();\n            TRY { SESSIONSTORAGE.SETITEM('SN-FOLLOW-PENDING', JSON.STRINGIFY({ ID: B.GETATTRIBUTE('DATA-FOLLOW-FILM'), T: DATE.NOW() })); } CATCH (ERR) {}\n            VAR BASE = WINDOW.SACNILK.BASE_PATH || '', PATH = LOCATION.PATHNAME;\n            IF (BASE && PATH.INDEXOF(BASE + '/') === 0) { PATH = PATH.SLICE(BASE.LENGTH); }\n            WINDOW.LOCATION.HREF = BASE + '/LOGIN?REDIRECT=' + ENCODEURICOMPONENT(PATH + LOCATION.SEARCH);\n        });\n    })();\n    FUNCTION LOADUSERDATAIFLOGGEDIN() {\n        IF (MAYBELOGGEDIN()) {\n            RETURN LOADUSERDATA();\n        }\n        APPLYUSERDATA({ ISLOGGEDIN: FALSE, USERNAME: '', USERLEVEL: 1, USERID: '', TIMESTAMP: MATH.FLOOR(DATE.NOW() / 1000) });\n    }\n\n    // LOAD USER DATA DYNAMICALLY\n    // FRESH === TRUE (AFTER A LOGIN ON THIS PAGE, E.G. THE RATING WIDGET): BYPASS THE 60 S BROWSER COPY OF THE\n    // LOGGED-OUT ANSWER\n    ASYNC FUNCTION LOADUSERDATA(FRESH) {\n        TRY {\n            LET APIURL = '/API/USER-DATA.PHP';\n            IF(WINDOW.LOCATION.HOSTNAME === 'LOCALHOST') {\n                APIURL = '/SACWEB/API/USER-DATA.PHP';\n            }\n            CONST RESPONSE = FRESH === TRUE\n                ? AWAIT FETCH(APIURL + '?T=' + DATE.NOW(), { CACHE: 'NO-STORE', CREDENTIALS: 'SAME-ORIGIN' })\n                : AWAIT FETCH(APIURL);\n            CONST RESULT = AWAIT RESPONSE.JSON();\n            \n            IF (RESULT.SUCCESS && RESULT.DATA) {\n                // NOT LOGGED IN AFTER ALL (EXPIRED, OR LOGGED OUT ELSEWHERE): DROP THE HINT, SO THE NEXT PAGE ASKS NOTHING\n                IF (!RESULT.DATA.ISLOGGEDIN) {\n                    DOCUMENT.COOKIE = 'SN_LI=; MAX-AGE=0; PATH=/';\n                }\n                APPLYUSERDATA(RESULT.DATA);\n                //CONSOLE.LOG('USER DATA LOADED:', USERDATA);\n            } ELSE {\n                CONSOLE.WARN('FAILED TO LOAD USER DATA:', RESULT.MESSAGE);\n            }\n        } CATCH (ERROR) {\n            CONSOLE.ERROR('FAILED TO LOAD USER DATA:', ERROR);\n        }\n    }\n    \n    // LOAD ON PAGE LOAD, FOR A VISITOR WHO MAY BE LOGGED IN\n    DOCUMENT.ADDEVENTLISTENER('DOMCONTENTLOADED', LOADUSERDATAIFLOGGEDIN);\n    WINDOW.SACNILKRELOADUSER = FUNCTION () { RETURN LOADUSERDATA(TRUE); };\n    // A PAGE RESTORED FROM THE BACK/FORWARD CACHE KEEPS THE LOGIN STATE IT WAS FIRST DRAWN WITH: REFRESH IT\n    WINDOW.ADDEVENTLISTENER('PAGESHOW', FUNCTION (E) { IF (E.PERSISTED) { LOADUSERDATAIFLOGGEDIN(); } });",
     "budget": "N/A"
   },
   "languages": {
@@ -612,6 +612,162 @@
         }
       ]
     },
+    "Malayalam": {
+      "total": 1.77,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 0.09,
+          "rating": "Low"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 0.04,
+          "rating": "Low"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 0.09,
+          "rating": "Low"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.1,
+          "rating": "Low"
+        },
+        {
+          "day": 9,
+          "label": "Day 9",
+          "collection": 0.13,
+          "rating": "Low"
+        },
+        {
+          "day": 10,
+          "label": "Day 10",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 11,
+          "label": "Day 11",
+          "collection": 0.22,
+          "rating": "Low"
+        },
+        {
+          "day": 12,
+          "label": "Day 12",
+          "collection": 0.1,
+          "rating": "Low"
+        },
+        {
+          "day": 13,
+          "label": "Day 13",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 14,
+          "label": "Day 14",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 15,
+          "label": "Day 15",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 16,
+          "label": "Day 16",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 17,
+          "label": "Day 17",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 18,
+          "label": "Day 18",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 19,
+          "label": "Day 19",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 20,
+          "label": "Day 20",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 21,
+          "label": "Day 21",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 22,
+          "label": "Day 22",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 23,
+          "label": "Day 23",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 24,
+          "label": "Day 24",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 25,
+          "label": "Day 25",
+          "collection": 0.01,
+          "rating": "Low"
+        }
+      ]
+    },
     "Telugu": {
       "total": 43.07,
       "verdict": "All Time Blockbuster",
@@ -961,6 +1117,312 @@
         {
           "day": 58,
           "label": "Day 58",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 59,
+          "label": "Day 59",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 60,
+          "label": "Day 60",
+          "collection": 0.01,
+          "rating": "Low"
+        }
+      ]
+    },
+    "Kannada": {
+      "total": 3.87,
+      "verdict": "All Time Blockbuster",
+      "days": [
+        {
+          "day": 1,
+          "label": "Day 1",
+          "collection": 0.08,
+          "rating": "Low"
+        },
+        {
+          "day": 2,
+          "label": "Day 2",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 3,
+          "label": "Day 3",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 4,
+          "label": "Day 4",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 5,
+          "label": "Day 5",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 6,
+          "label": "Day 6",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 7,
+          "label": "Day 7",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 8,
+          "label": "Day 8",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 9,
+          "label": "Day 9",
+          "collection": 0.22,
+          "rating": "Low"
+        },
+        {
+          "day": 10,
+          "label": "Day 10",
+          "collection": 0.3,
+          "rating": "Low"
+        },
+        {
+          "day": 11,
+          "label": "Day 11",
+          "collection": 0.38,
+          "rating": "Low"
+        },
+        {
+          "day": 12,
+          "label": "Day 12",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 13,
+          "label": "Day 13",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 14,
+          "label": "Day 14",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 15,
+          "label": "Day 15",
+          "collection": 0.1,
+          "rating": "Low"
+        },
+        {
+          "day": 16,
+          "label": "Day 16",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 17,
+          "label": "Day 17",
+          "collection": 0.15,
+          "rating": "Low"
+        },
+        {
+          "day": 18,
+          "label": "Day 18",
+          "collection": 0.2,
+          "rating": "Low"
+        },
+        {
+          "day": 19,
+          "label": "Day 19",
+          "collection": 0.08,
+          "rating": "Low"
+        },
+        {
+          "day": 20,
+          "label": "Day 20",
+          "collection": 0.08,
+          "rating": "Low"
+        },
+        {
+          "day": 21,
+          "label": "Day 21",
+          "collection": 0.07,
+          "rating": "Low"
+        },
+        {
+          "day": 22,
+          "label": "Day 22",
+          "collection": 0.07,
+          "rating": "Low"
+        },
+        {
+          "day": 23,
+          "label": "Day 23",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 24,
+          "label": "Day 24",
+          "collection": 0.08,
+          "rating": "Low"
+        },
+        {
+          "day": 25,
+          "label": "Day 25",
+          "collection": 0.09,
+          "rating": "Low"
+        },
+        {
+          "day": 26,
+          "label": "Day 26",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 27,
+          "label": "Day 27",
+          "collection": 0.05,
+          "rating": "Low"
+        },
+        {
+          "day": 28,
+          "label": "Day 28",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 29,
+          "label": "Day 29",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 30,
+          "label": "Day 30",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 31,
+          "label": "Day 31",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 32,
+          "label": "Day 32",
+          "collection": 0.04,
+          "rating": "Low"
+        },
+        {
+          "day": 33,
+          "label": "Day 33",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 34,
+          "label": "Day 34",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 35,
+          "label": "Day 35",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 36,
+          "label": "Day 36",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 37,
+          "label": "Day 37",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 38,
+          "label": "Day 38",
+          "collection": 0.03,
+          "rating": "Low"
+        },
+        {
+          "day": 39,
+          "label": "Day 39",
+          "collection": 0.04,
+          "rating": "Low"
+        },
+        {
+          "day": 40,
+          "label": "Day 40",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 41,
+          "label": "Day 41",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 42,
+          "label": "Day 42",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 43,
+          "label": "Day 43",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 45,
+          "label": "Day 45",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 46,
+          "label": "Day 46",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 48,
+          "label": "Day 48",
+          "collection": 0.02,
+          "rating": "Low"
+        },
+        {
+          "day": 52,
+          "label": "Day 52",
+          "collection": 0.01,
+          "rating": "Low"
+        },
+        {
+          "day": 53,
+          "label": "Day 53",
           "collection": 0.01,
           "rating": "Low"
         },
@@ -1333,468 +1795,6 @@
         {
           "day": 60,
           "label": "Day 60",
-          "collection": 0.01,
-          "rating": "Low"
-        }
-      ]
-    },
-    "Kannada": {
-      "total": 3.87,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 0.08,
-          "rating": "Low"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 9,
-          "label": "Day 9",
-          "collection": 0.22,
-          "rating": "Low"
-        },
-        {
-          "day": 10,
-          "label": "Day 10",
-          "collection": 0.3,
-          "rating": "Low"
-        },
-        {
-          "day": 11,
-          "label": "Day 11",
-          "collection": 0.38,
-          "rating": "Low"
-        },
-        {
-          "day": 12,
-          "label": "Day 12",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 13,
-          "label": "Day 13",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 14,
-          "label": "Day 14",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 15,
-          "label": "Day 15",
-          "collection": 0.1,
-          "rating": "Low"
-        },
-        {
-          "day": 16,
-          "label": "Day 16",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 17,
-          "label": "Day 17",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 18,
-          "label": "Day 18",
-          "collection": 0.2,
-          "rating": "Low"
-        },
-        {
-          "day": 19,
-          "label": "Day 19",
-          "collection": 0.08,
-          "rating": "Low"
-        },
-        {
-          "day": 20,
-          "label": "Day 20",
-          "collection": 0.08,
-          "rating": "Low"
-        },
-        {
-          "day": 21,
-          "label": "Day 21",
-          "collection": 0.07,
-          "rating": "Low"
-        },
-        {
-          "day": 22,
-          "label": "Day 22",
-          "collection": 0.07,
-          "rating": "Low"
-        },
-        {
-          "day": 23,
-          "label": "Day 23",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 24,
-          "label": "Day 24",
-          "collection": 0.08,
-          "rating": "Low"
-        },
-        {
-          "day": 25,
-          "label": "Day 25",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 26,
-          "label": "Day 26",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 27,
-          "label": "Day 27",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 28,
-          "label": "Day 28",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 29,
-          "label": "Day 29",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 30,
-          "label": "Day 30",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 31,
-          "label": "Day 31",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 32,
-          "label": "Day 32",
-          "collection": 0.04,
-          "rating": "Low"
-        },
-        {
-          "day": 33,
-          "label": "Day 33",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 34,
-          "label": "Day 34",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 35,
-          "label": "Day 35",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 36,
-          "label": "Day 36",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 37,
-          "label": "Day 37",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 38,
-          "label": "Day 38",
-          "collection": 0.03,
-          "rating": "Low"
-        },
-        {
-          "day": 39,
-          "label": "Day 39",
-          "collection": 0.04,
-          "rating": "Low"
-        },
-        {
-          "day": 40,
-          "label": "Day 40",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 41,
-          "label": "Day 41",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 42,
-          "label": "Day 42",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 43,
-          "label": "Day 43",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 45,
-          "label": "Day 45",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 46,
-          "label": "Day 46",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 48,
-          "label": "Day 48",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 52,
-          "label": "Day 52",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 53,
-          "label": "Day 53",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 59,
-          "label": "Day 59",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 60,
-          "label": "Day 60",
-          "collection": 0.01,
-          "rating": "Low"
-        }
-      ]
-    },
-    "Malayalam": {
-      "total": 1.77,
-      "verdict": "All Time Blockbuster",
-      "days": [
-        {
-          "day": 1,
-          "label": "Day 1",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 2,
-          "label": "Day 2",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 3,
-          "label": "Day 3",
-          "collection": 0.04,
-          "rating": "Low"
-        },
-        {
-          "day": 4,
-          "label": "Day 4",
-          "collection": 0.09,
-          "rating": "Low"
-        },
-        {
-          "day": 5,
-          "label": "Day 5",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 6,
-          "label": "Day 6",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 7,
-          "label": "Day 7",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 8,
-          "label": "Day 8",
-          "collection": 0.1,
-          "rating": "Low"
-        },
-        {
-          "day": 9,
-          "label": "Day 9",
-          "collection": 0.13,
-          "rating": "Low"
-        },
-        {
-          "day": 10,
-          "label": "Day 10",
-          "collection": 0.15,
-          "rating": "Low"
-        },
-        {
-          "day": 11,
-          "label": "Day 11",
-          "collection": 0.22,
-          "rating": "Low"
-        },
-        {
-          "day": 12,
-          "label": "Day 12",
-          "collection": 0.1,
-          "rating": "Low"
-        },
-        {
-          "day": 13,
-          "label": "Day 13",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 14,
-          "label": "Day 14",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 15,
-          "label": "Day 15",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 16,
-          "label": "Day 16",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 17,
-          "label": "Day 17",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 18,
-          "label": "Day 18",
-          "collection": 0.05,
-          "rating": "Low"
-        },
-        {
-          "day": 19,
-          "label": "Day 19",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 20,
-          "label": "Day 20",
-          "collection": 0.02,
-          "rating": "Low"
-        },
-        {
-          "day": 21,
-          "label": "Day 21",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 22,
-          "label": "Day 22",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 23,
-          "label": "Day 23",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 24,
-          "label": "Day 24",
-          "collection": 0.01,
-          "rating": "Low"
-        },
-        {
-          "day": 25,
-          "label": "Day 25",
           "collection": 0.01,
           "rating": "Low"
         }
